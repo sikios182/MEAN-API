@@ -1,0 +1,14 @@
+<form class="form-auth">
+	<h2 class="form-auth-heading">Signup</h2>
+	
+	<div class="alert alert-danger" ng-if="signupError" role="alert">{{ sc.signupErrorMessage }}</div>
+	<div class="alert alert-success" ng-if="sc.signupSuccess" role="alert">Account created! You can <a ui-sref="login">login</a> now!</div>
+
+	<label class="sr-only" for="inputUsername">Username</label>
+	<input id="inputUsername" class="form-control" ng-model="sc.username" type="text" name="" placeholder="Username" />
+
+	<label class="sr-only" for="inputPassword">Password</label>
+	<input id="inputPassword" class="form-control" ng-model="sc.password" type="password" name="" placeholder="Password" />
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="sc.signup()">Submit</button>
+</form>

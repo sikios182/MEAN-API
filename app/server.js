@@ -6,7 +6,8 @@ var express = require('express'),
 	morgan = require('morgan'),
 	sequelize = require('sequelize'),
 	passport = require('passport'),
-	jwt = require('jsonwebtoken');
+	jwt = require('jsonwebtoken'),
+	path = require('path');
 
 var hookJWTStrategy = require('./services/passportStrategy');
 
@@ -31,7 +32,7 @@ app.use(passport.initialize());
 hookJWTStrategy(passport);
 
 //7.- Set the static files location
-app.use(express.static(__dirname + '../../public'));
+app.use(express.static(__dirname + '/../public'));
 
 //8.- Home route
 //Bundle API routes
@@ -39,7 +40,7 @@ app.use('/api', require('./routes/api')(passport));
 
 //Catch all route
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '../../public/app/views/index.html'));
+	res.sendFile(path.join(__dirname + '/../public/app/views/index.html'));
 });
 
 //9.- Start the server
